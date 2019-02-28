@@ -6,9 +6,9 @@ export default class LikesTab extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor, focused }) =>
       focused ? (
-        <Icon type="AntDesign" name="heart" style={{ color: tintColor }} />
+        <Icon type="AntDesign" name="heart" style={{ color: tintColor, fontSize: 24 }} />
       ) : (
-        <Icon type="AntDesign" name="hearto" style={{ color: tintColor }} />
+        <Icon type="AntDesign" name="hearto" style={{ color: tintColor, fontSize: 24 }} />
       )
   };
 

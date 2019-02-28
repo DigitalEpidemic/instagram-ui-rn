@@ -17,7 +17,7 @@ export default class MainScreen extends Component {
     headerTitle: (
       <Image
         source={require("../assets/logo-large.png")}
-        style={{ height: "42%", resizeMode: "contain", marginLeft: -50, marginTop: 5 }}
+        style={{ height: "45%", resizeMode: "contain", marginLeft: -50, marginTop: 8 }}
       />
     ),
     headerRight: (
