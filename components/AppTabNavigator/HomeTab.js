@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, ScrollView } from "react-native";
-import { Icon, Container, Content, Thumbnail, Card } from "native-base";
+import { Text, StyleSheet, View, ScrollView, Image, Platform, StatusBar } from "react-native";
+import { Icon, Container, Content, Thumbnail, Card, Header, Left, Right, Body } from "native-base";
 import CardComponent from "../CardComponent";
+import StoryItem from "../StoryItem";
+import { LogoImage } from "../../utility/ImageLocations";
 
 export default class HomeTab extends Component {
   static navigationOptions = {
@@ -16,7 +18,21 @@ export default class HomeTab extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
+        {/* Header */}
+        <Header style={[styles.androidHeader]}>
+          <Left>
+            <Icon type="Feather" name="camera" style={{ paddingLeft: 2 }} />
+          </Left>
+          <Body>
+            <Image source={LogoImage} style={{ height: 23, width: 80, marginLeft: -14, marginTop: 8 }} />
+          </Body>
+          <Right>
+            <Icon type="Feather" name="tv" style={{ paddingRight: 20 }} />
+            <Icon type="Feather" name="send" style={{ paddingRight: 2 }} />
+          </Right>
+        </Header>
+
+        <Content style={{ zIndex: -3 }}>
           <Card style={{ marginTop: -5 }}>
             <View style={{ flex: 3, height: 100 }}>
               <ScrollView
@@ -28,89 +44,34 @@ export default class HomeTab extends Component {
                   paddingEnd: 5
                 }}
               >
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <View>
-                    <Thumbnail
-                      style={{
-                        marginHorizontal: 12
-                      }}
-                      source={require("../../assets/8biticon.jpg")}
-                    />
-                    <Icon
-                      type="AntDesign"
-                      name="pluscircle"
-                      style={{
-                        fontSize: 15,
-                        color: "#3897f0",
-                        position: "absolute",
-                        bottom: 0,
-                        right: 9.5
-                      }}
-                    />
-                  </View>
-                  <Text style={{ fontSize: 12 }}>Your story</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <Thumbnail
-                    style={{
-                      marginHorizontal: 12,
-                      borderColor: "#c13584",
-                      borderWidth: 2
-                    }}
-                    source={require("../../assets/profile5.jpg")}
-                  />
-                  <Text style={{ fontSize: 12 }}>xxxtentacion</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <Thumbnail
-                    style={{
-                      marginHorizontal: 12,
-                      borderColor: "#c13584",
-                      borderWidth: 2
-                    }}
-                    source={require("../../assets/profile6.jpg")}
-                  />
-                  <Text style={{ fontSize: 12 }}>ubisoft</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <Thumbnail
-                    style={{
-                      marginHorizontal: 12,
-                      borderColor: "#c13584",
-                      borderWidth: 2
-                    }}
-                    source={require("../../assets/profile4.jpg")}
-                  />
-                  <Text style={{ fontSize: 12 }}>thisisbillgates</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <Thumbnail
-                    style={{
-                      marginHorizontal: 12,
-                      borderColor: "#c13584",
-                      borderWidth: 2
-                    }}
-                    source={require("../../assets/profile3.jpg")}
-                  />
-                  <Text style={{ fontSize: 12 }}>zuck</Text>
-                </View>
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                  <Thumbnail
-                    style={{
-                      marginHorizontal: 12,
-                      borderColor: "#c13584",
-                      borderWidth: 2
-                    }}
-                    source={require("../../assets/profile2.jpg")}
-                  />
-                  <Text style={{ fontSize: 12 }}>vancityreynolds</Text>
-                </View>
+                {/* Stories */}
+                <StoryItem yourStory />
+                <StoryItem username="xxxtentacion" imageSource="5" />
+                <StoryItem username="ubisoft" imageSource="6" />
+                <StoryItem username="m.cordeiroo" imageSource="7" />
+                <StoryItem username="thisisbillgates" imageSource="4" />
+                <StoryItem username="zuck" imageSource="3" />
+                <StoryItem username="vancityreynolds" imageSource="2" />
               </ScrollView>
             </View>
           </Card>
+
+          {/* Feed */}
           <CardComponent imageSource="1" likes="377" />
           <CardComponent imageSource="2" likes="864" />
           <CardComponent imageSource="3" likes="256" />
+          <CardComponent imageSource="4" likes="174" />
+          <CardComponent imageSource="5" likes="865" />
+          <CardComponent imageSource="6" likes="453" />
+          <CardComponent imageSource="7" likes="123" />
+          <CardComponent imageSource="8" likes="654" />
+          <CardComponent imageSource="9" likes="789" />
+          <CardComponent imageSource="10" likes="820" />
+          <CardComponent imageSource="11" likes="204" />
+          <CardComponent imageSource="12" likes="574" />
+          <CardComponent imageSource="13" likes="148" />
+          <CardComponent imageSource="14" likes="888" />
+          <CardComponent imageSource="15" likes="982" />
         </Content>
       </Container>
     );
@@ -121,5 +82,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  androidHeader: {
+    ...Platform.select({
+      android: {
+        marginTop: StatusBar.currentHeight,
+        backgroundColor: "white"
+      }
+    })
+  },
+  androidHeaderTitle: {
+    ...Platform.select({
+      android: {
+        alignItems: "flex-end"
+      }
+    })
   }
 });

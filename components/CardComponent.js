@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon } from "native-base";
+import { ListImages, StoryImages } from "../utility/ImageLocations";
 
 export default class CardComponent extends Component {
   render() {
-    const images = {
-      "1": require("../assets/feed1.jpg"),
-      "2": require("../assets/feed2.jpg"),
-      "3": require("../assets/feed3.jpg")
-    };
-
     return (
       <Card style={{ marginTop: -5 }}>
         {/* Profile Info */}
         <CardItem>
           <Left>
-            <Thumbnail source={require("../assets/8biticon.jpg")} />
+            <Thumbnail small source={StoryImages["1"]} />
             <Body>
               <Text style={{ fontWeight: "bold" }}>littlepolasz</Text>
               <Text note>Secret Location</Text>
@@ -29,7 +24,7 @@ export default class CardComponent extends Component {
         {/* Image */}
         <CardItem cardBody>
           <Image
-            source={images[this.props.imageSource]}
+            source={ListImages[this.props.imageSource]}
             style={{ height: 200, width: null, resizeMode: "cover", flex: 1 }}
           />
         </CardItem>
