@@ -18,13 +18,16 @@ export default class ProfileTab extends Component {
 
   state = {
     activeIndex: 0,
-    isLoading: true
+    isLoading: false
   };
 
   segmentClicked = index => {
-    this.setState({
-      activeIndex: index
-    });
+    if (this.state.activeIndex != index) {
+      this.setState({
+        isLoading: true,
+        activeIndex: index
+      });
+    }
   };
 
   renderSection() {
@@ -32,10 +35,14 @@ export default class ProfileTab extends Component {
       case 0: // Grid view
         return (
           <FlatList
+            initialNumToRender={9}
             data={GridImages}
             key={"grid"}
             keyExtractor={(item, index) => index.toString()}
             numColumns={3}
+            ListFooterComponent={this.renderIndicator.bind(this)}
+            onEndReached={() => this.setState({ isLoading: false })}
+            onEndReachedThreshold={0.1}
             renderItem={({ item, index }) => (
               <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
                 <Image
@@ -86,10 +93,14 @@ export default class ProfileTab extends Component {
       case 2: // Tagged photos
         return (
           <FlatList
+            initialNumToRender={9}
             data={TaggedImages}
             key={"grid"}
             keyExtractor={(item, index) => index.toString()}
             numColumns={3}
+            ListFooterComponent={this.renderIndicator.bind(this)}
+            onEndReached={() => this.setState({ isLoading: false })}
+            onEndReachedThreshold={0.1}
             renderItem={({ item, index }) => (
               <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
                 <Image
