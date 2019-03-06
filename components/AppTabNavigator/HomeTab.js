@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, ScrollView, Image, Platform, StatusBar } from "react-native";
-import { Icon, Container, Content, Thumbnail, Card, Header, Left, Right, Body } from "native-base";
+import { StyleSheet, View, ScrollView, Image, Platform, StatusBar } from "react-native";
+import { Icon, Container, Content, Card, Header, Left, Right, Body } from "native-base";
 import CardComponent from "../CardComponent";
 import StoryItem from "../StoryItem";
 import { LogoImage } from "../../utility/ImageLocations";

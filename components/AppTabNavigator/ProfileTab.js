@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Platform, StatusBar, Image, Dimensions, FlatList, ActivityIndicator } from "react-native";
-import { Icon, Container, Content, Header, Left, Right, Body, Button } from "native-base";
+import { Icon, Container, Content, Header, Left, Right, Button } from "native-base";
 import CardComponent from "../CardComponent";
 import { GridImages, TaggedImages, StoryImages } from "../../utility/ImageLocations";
 
@@ -33,76 +33,75 @@ export default class ProfileTab extends Component {
         return (
           <FlatList
             data={GridImages}
+            key={"grid"}
             keyExtractor={(item, index) => index.toString()}
             numColumns={3}
             renderItem={({ item, index }) => (
-              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
-                  <Image
-                    style={{
-                      flex: 1,
-                      alignSelf: "stretch",
-                      width: undefined,
-                      height: undefined,
-                      margin: 1
-                    }}
-                    source={GridImages[index]}
-                  />
-                </View>
+              <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
+                <Image
+                  style={{
+                    flex: 1,
+                    alignSelf: "stretch",
+                    width: undefined,
+                    height: undefined,
+                    margin: 1
+                  }}
+                  source={GridImages[index]}
+                />
               </View>
             )}
           />
         );
       case 1: // Vertical view
         return (
-          <View style={{ flex: 1 }}>
-            <FlatList
-              initialNumToRender={2}
-              data={[
-                { source: "1", likes: "377" },
-                { source: "2", likes: "864" },
-                { source: "3", likes: "256" },
-                { source: "4", likes: "174" },
-                { source: "5", likes: "865" },
-                { source: "6", likes: "453" },
-                { source: "7", likes: "123" },
-                { source: "8", likes: "654" },
-                { source: "9", likes: "789" },
-                { source: "10", likes: "820" },
-                { source: "11", likes: "204" },
-                { source: "12", likes: "574" },
-                { source: "13", likes: "148" },
-                { source: "14", likes: "888" },
-                { source: "15", likes: "982" }
-              ]}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => <CardComponent imageSource={item.source} likes={item.likes} />}
-              ListFooterComponent={this.renderIndicator.bind(this)}
-              onEndReached={() => this.setState({ isLoading: false })}
-              onEndReachedThreshold={0.1}
-            />
-          </View>
+          // <View style={{ flex: 1 }}>
+          <FlatList
+            initialNumToRender={2}
+            data={[
+              { source: "1", likes: "377" },
+              { source: "2", likes: "864" },
+              { source: "3", likes: "256" },
+              { source: "4", likes: "174" },
+              { source: "5", likes: "865" },
+              { source: "6", likes: "453" },
+              { source: "7", likes: "123" },
+              { source: "8", likes: "654" },
+              { source: "9", likes: "789" },
+              { source: "10", likes: "820" },
+              { source: "11", likes: "204" },
+              { source: "12", likes: "574" },
+              { source: "13", likes: "148" },
+              { source: "14", likes: "888" },
+              { source: "15", likes: "982" }
+            ]}
+            key={"list"}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => <CardComponent imageSource={item.source} likes={item.likes} />}
+            ListFooterComponent={this.renderIndicator.bind(this)}
+            onEndReached={() => this.setState({ isLoading: false })}
+            onEndReachedThreshold={0.1}
+          />
+          // </View>
         );
       case 2: // Tagged photos
         return (
           <FlatList
             data={TaggedImages}
+            key={"grid"}
             keyExtractor={(item, index) => index.toString()}
             numColumns={3}
             renderItem={({ item, index }) => (
-              <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
-                  <Image
-                    style={{
-                      flex: 1,
-                      alignSelf: "stretch",
-                      width: undefined,
-                      height: undefined,
-                      margin: 1
-                    }}
-                    source={TaggedImages[index]}
-                  />
-                </View>
+              <View key={index} style={[{ width: width / 3 }, { height: width / 3 }]}>
+                <Image
+                  style={{
+                    flex: 1,
+                    alignSelf: "stretch",
+                    width: undefined,
+                    height: undefined,
+                    margin: 1
+                  }}
+                  source={TaggedImages[index]}
+                />
               </View>
             )}
           />

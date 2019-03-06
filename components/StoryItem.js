@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, View } from "react-native";
 import { Thumbnail, Icon } from "native-base";
 import { StoryImages } from "../utility/ImageLocations";
 
 export default class StoryItem extends Component {
   render() {
+    // First item/Your story
     if (this.props.yourStory) {
       return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -32,6 +33,7 @@ export default class StoryItem extends Component {
       );
     }
 
+    // All other story items
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Thumbnail
@@ -47,5 +49,3 @@ export default class StoryItem extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

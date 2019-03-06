@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
-import { Icon, Content, Container } from "native-base";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
 import HomeTab from "./AppTabNavigator/HomeTab";
@@ -8,16 +6,6 @@ import SearchTab from "./AppTabNavigator/SearchTab";
 import AddMediaTab from "./AppTabNavigator/AddMediaTab";
 import LikesTab from "./AppTabNavigator/LikesTab";
 import ProfileTab from "./AppTabNavigator/ProfileTab";
-
-export default class MainScreen extends Component {
-  static navigationOptions = {
-    header: null
-  };
-
-  render() {
-    return <AppContainer />;
-  }
-}
 
 const AppTabNavigator = createBottomTabNavigator(
   {
@@ -49,10 +37,12 @@ const AppTabNavigator = createBottomTabNavigator(
 
 const AppContainer = createAppContainer(AppTabNavigator);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+export default class MainScreen extends Component {
+  static navigationOptions = {
+    header: null
+  };
+
+  render() {
+    return <AppContainer />;
   }
-});
+}

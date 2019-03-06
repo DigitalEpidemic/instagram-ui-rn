@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, Image } from "react-native";
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon } from "native-base";
 import { ListImages, StoryImages } from "../utility/ImageLocations";
 
@@ -76,6 +76,7 @@ export default class CardComponent extends Component {
   }
 }
 
+// TODO Move some inline to styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
