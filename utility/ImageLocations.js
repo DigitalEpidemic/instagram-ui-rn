@@ -73,7 +73,8 @@ export const StoryImages = {
   "4": require("../assets/Profile/4.jpg"),
   "5": require("../assets/Profile/5.jpg"),
   "6": require("../assets/Profile/6.jpg"),
-  "7": require("../assets/Profile/7.jpg")
+  "7": require("../assets/Profile/7.jpg"),
+  "8": require("../assets/Profile/8.jpg")
 };
 
 export const LogoImage = require("../assets/logo.png");

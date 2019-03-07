@@ -1,6 +1,41 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
-import { Icon } from "native-base";
+import { Text, StyleSheet, View, Platform, StatusBar } from "react-native";
+import { Icon, Container } from "native-base";
+import { createMaterialTopTabNavigator, createAppContainer } from "react-navigation";
+
+import FollowingTab from "./LikesTabNavigator/FollowingTab";
+import YouTab from "./LikesTabNavigator/YouTab";
+
+const LikesTabNavigator = createMaterialTopTabNavigator(
+  {
+    FollowingTab: {
+      screen: FollowingTab
+    },
+    YouTab: {
+      screen: YouTab
+    }
+  },
+  {
+    tabBarOptions: {
+      style: {
+        ...Platform.select({
+          android: {
+            marginTop: StatusBar.currentHeight,
+            backgroundColor: "white"
+          }
+        })
+      },
+      labelStyle: {
+        color: "black"
+      },
+      indicatorStyle: {
+        backgroundColor: "black"
+      }
+    }
+  }
+);
+
+const AppContainer = createAppContainer(LikesTabNavigator);
 
 export default class LikesTab extends Component {
   static navigationOptions = {
@@ -13,11 +48,7 @@ export default class LikesTab extends Component {
   };
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Likes Tab</Text>
-      </View>
-    );
+    return <AppContainer />;
   }
 }
 
@@ -26,5 +57,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center"
+  },
+  androidHeader: {
+    ...Platform.select({
+      android: {
+        marginTop: StatusBar.currentHeight,
+        backgroundColor: "white"
+      }
+    })
+  },
+  androidHeaderTitle: {
+    ...Platform.select({
+      android: {
+        alignItems: "flex-end"
+      }
+    })
   }
 });
