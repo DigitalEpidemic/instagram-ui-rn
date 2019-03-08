@@ -16,9 +16,9 @@ export default class FollowingTab extends Component {
           <Card>
             <FollowingItem username="xxxtentacion" imageSource="5" likeName="ubisoft" likedPost="1" time="1 s" />
             <FollowingItem username="thisisbillgates" imageSource="4" followName="apple" time="10 s" />
-            <FollowingItem username="zuck" imageSource="3" likeName="xxxtentacion" likedPost="9" time="30 s" />
+            <FollowingItem username="zuck" imageSource="3" likeName="nexon" likedPost="9" time="30 s" />
             <FollowingItem username="ubisoft" imageSource="6" likeName="nintendo" likedPost="12" time="35 s" />
-            <FollowingItem username="m.cordeiroo" imageSource="7" followName="xxxtentacion" time="48 s" />
+            <FollowingItem username="m.cordeiroo" imageSource="7" followName="xxxtentacion" time="44 s" />
             <FollowingItem username="xxxtentacion" imageSource="5" followName="m.cordeiroo" time="49 s" />
             <FollowingItem username="vancityreynolds" imageSource="2" likeName="capcom" likedPost="8" time="53 s" />
             <FollowingItem username="ubisoft" imageSource="6" followName="corsair" time="1 m" />
