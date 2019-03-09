@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
-import { SearchImages } from "../utility/ImageLocations";
+import { SearchImages, FeedImages } from "../utility/ImageLocations";
 import { Icon } from "native-base";
 
 const { width, height } = Dimensions.get("window");
@@ -40,7 +40,7 @@ export default class SearchGridItem extends Component {
               height: undefined,
               margin: 1
             }}
-            source={SearchImages[this.props.imageSource]}
+            source={this.props.feed ? FeedImages[this.props.imageSource] : SearchImages[this.props.imageSource]}
           />
         </View>
       );

@@ -40,15 +40,10 @@ const AppTabNavigator = createMaterialTopTabNavigator(
 const AppContainer = createAppContainer(AppTabNavigator);
 
 export default class AddMediaTab extends Component {
-  state = {
-    hasCameraPermission: null,
-    type: Camera.Constants.Type.back,
-    flash: true
-  };
-
-  async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === "granted" });
+  componentDidMount() {
+    const { navigation } = this.props;
+    navigation.addListener("willFocus", () => this.setState({ focusedScreen: true }));
+    navigation.addListener("willBlur", () => this.setState({ focusedScreen: false }));
   }
 
   static navigationOptions = {
@@ -61,14 +56,21 @@ export default class AddMediaTab extends Component {
     tabBarVisible: true
   };
 
+  state = {
+    focusedScreen: false
+  };
+
   render() {
-    const { hasCameraPermission } = this.state;
-    if (hasCameraPermission === null) {
-      return <View />;
-    } else if (hasCameraPermission === false) {
-      return <Text>No access to camera</Text>;
+    const { focusedScreen } = this.state;
+    if (focusedScreen) {
+      return (
+        <View style={{ flex: 1 }}>
+          <StatusBar hidden />
+          <AppContainer />
+        </View>
+      );
     } else {
-      return <AppContainer />;
+      return <View />;
     }
   }
 }

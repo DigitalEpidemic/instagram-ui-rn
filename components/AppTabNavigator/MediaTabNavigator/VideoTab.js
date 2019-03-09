@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, TouchableOpacity, Platform, StatusBar } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity, Platform, StatusBar, Dimensions } from "react-native";
 import { Icon, Header, Button } from "native-base";
 import { Camera, Permissions } from "expo";
+const { width, height } = Dimensions.get("window");
 
 export default class VideoTab extends Component {
   static navigationOptions = {
@@ -33,7 +34,7 @@ export default class VideoTab extends Component {
             <Text style={{ fontSize: 17, fontWeight: "700" }}>Video</Text>
           </View>
         </Header>
-        <Camera style={{ flex: 1 }} type={this.state.type}>
+        <Camera style={[{ width: width }, { height: width }]} type={this.state.type} ratio="1:1">
           <View
             style={{
               flex: 1,
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
   androidHeader: {
     ...Platform.select({
       android: {
-        marginTop: StatusBar.currentHeight,
+        // marginTop: StatusBar.currentHeight,
         backgroundColor: "white"
       }
     })

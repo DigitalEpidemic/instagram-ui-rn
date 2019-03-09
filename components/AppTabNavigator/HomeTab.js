@@ -18,6 +18,7 @@ export default class HomeTab extends Component {
   render() {
     return (
       <Container style={styles.container}>
+        <StatusBar hidden={false} />
         {/* Header */}
         <Header style={[styles.androidHeader]}>
           <Left>
